@@ -1,27 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luso Posters - Under Construction</title>
+  <title>Luso Posters</title>
+  <meta name="description" content="Posters de artistas portugueses de hip-hop e trap. Edições numeradas em A4, A3, A2 e A1.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Knewave&family=Rubik+Glitch&display=swap" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=Knewave&family=Rubik+Glitch&display=swap" rel="stylesheet">
 </head>
-<body>
-  <video id="background-video" autoplay muted loop playsinline preload="auto" poster="assets/flow.jpg">
-    <source src="assets/flow.mp4" type="video/mp4">
-    <source src="assets/flow.webm" type="video/webm">
-  </video>
-  <div class="container">
-    <div class="logo knewave-regular">Luso Posters</div>
-    <h1 class="rubik-glitch-regular">O site está  a  ser  construído</h1>
-    <div class="social-links">
-      <a href="https://www.instagram.com/lusoflow" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@lusoflow" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+<body data-view="posters">
+  <header class="top">
+    <a class="brand" href="#posters">Luso Posters<span class="sub-brand">: Coleção 01</span></a>
+    <nav class="nav">
+      <a href="#posters" data-link="posters">Posters</a>
+      <a href="#shop" data-link="shop">Loja (<span class="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <!-- POSTERS: gallery -->
+  <main class="view view-posters">
+    <section class="intro">
+      <h1>Hip-hop &amp;<br>Trap Tuga<br>Vol. 01</h1>
+      <p>Dez artistas, dez posters. Edições numeradas, impressas em Lisboa e disponíveis em A4, A3, A2 e A1.</p>
+      <p class="sig">— Luso Flow</p>
+      <span class="hint">Faz scroll →</span>
+    </section>
+    <div class="track"></div>
+    <div class="caption" aria-live="polite"></div>
+    <div class="pager">
+      <button class="prev" aria-label="Anterior">←</button>
+      <span class="counter">00 / 10</span>
+      <button class="next" aria-label="Seguinte">→</button>
     </div>
-  </div>
+  </main>
+
+  <!-- SHOP -->
+  <main class="view view-shop">
+    <section class="shop-list">
+      <div class="shop-head">
+        <h2>Posters individuais</h2>
+        <p>Escolhe o tamanho e adiciona ao carrinho. Papel mate 200g, impressão giclée. Envio em tubo rígido para todo o país.</p>
+      </div>
+      <div class="grid"></div>
+    </section>
+    <aside class="cart">
+      <div class="cart-items">
+        <p class="empty">Ainda não tens nada no carrinho.</p>
+        <ul class="lines"></ul>
+      </div>
+      <div class="cart-sum">
+        <dl>
+          <dt>Subtotal</dt><dd class="sub">€0</dd>
+          <dt>Envio (Portugal)</dt><dd class="ship">€4,90</dd>
+          <dt class="total">Total</dt><dd class="total tot">€0</dd>
+        </dl>
+        <p class="note">IVA incluído. Envio grátis acima de €60.</p>
+        <button class="checkout" disabled>Finalizar compra</button>
+      </div>
+    </aside>
+  </main>
+
+  <div class="toast" role="status"></div>
+  <script src="app.js"></script>
 </body>
 </html>
