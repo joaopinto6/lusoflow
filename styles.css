@@ -330,6 +330,7 @@ body[data-view="posters"] { overflow: hidden; }
   .nav a { font-size: 15px; }
 
   :root { --pad: clamp(24px, 8vw, 40px); }
+  body { height: auto; min-height: 100%; }
   body[data-view="posters"] { overflow: auto; }
   .view-posters { position: static; padding: 40px var(--pad) 80px; }
   .intro { position: static; width: auto; margin-bottom: 96px; opacity: 1 !important; color: inherit !important; pointer-events: auto !important; }
