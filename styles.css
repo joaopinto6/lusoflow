@@ -101,30 +101,6 @@ p {
     line-height: 1.6;
 }
 
-/* Site Links Styling */
-.site-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.site-links a {
-    color: #ffffff;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 10px 24px;
-    border: 2px solid #ffffff;
-    border-radius: 999px;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-.site-links a:hover {
-    background: #ffffff;
-    color: #0a0a0a;
-}
-
 /* Social Links Styling */
 .social-links {
     display: flex;
