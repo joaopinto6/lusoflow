@@ -244,6 +244,7 @@ body[data-view="posters"] { overflow: hidden; }
 .size-dims { margin-top: 8px; font-size: 13px; color: var(--muted); }
 
 /* ---------- Cart ---------- */
+.cart-bar { display: none; }
 .cart {
   position: sticky;
   top: 0;
@@ -328,33 +329,72 @@ body[data-view="posters"] { overflow: hidden; }
   .nav { gap: 20px; }
   .nav a { font-size: 15px; }
 
+  :root { --pad: clamp(24px, 8vw, 40px); }
   body[data-view="posters"] { overflow: auto; }
-  .view-posters { position: static; padding: 24px var(--pad) 60px; }
-  .intro { position: static; width: auto; margin-bottom: 48px; opacity: 1 !important; color: inherit !important; }
+  .view-posters { position: static; padding: 40px var(--pad) 80px; }
+  .intro { position: static; width: auto; margin-bottom: 96px; opacity: 1 !important; color: inherit !important; pointer-events: auto !important; }
+  .intro h1 { font-size: clamp(36px, 11vw, 52px); margin-bottom: 36px; }
+  .intro p { font-size: 19px; margin-bottom: 20px; }
   .intro .hint { display: none; }
-  .track { position: static; display: grid; gap: 56px; }
-  .poster { position: relative; top: 0; height: auto; width: 100%; transform: none !important; opacity: 1 !important; }
+  .track { position: static; display: grid; grid-template-columns: minmax(0, 1fr); gap: 104px; }
+  .poster { position: relative; top: 0; height: auto; width: 100%; min-width: 0; aspect-ratio: auto; transform: none !important; opacity: 1 !important; }
+  .poster svg { height: auto; }
   .poster::after {
     content: attr(data-label);
     display: block;
-    margin-top: 16px;
+    margin-top: 22px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 15px;
   }
   .caption, .pager { display: none; }
 
-  .view-shop { grid-template-columns: 1fr; }
-  .shop-list { padding: 24px var(--pad) 40px; }
-  .shop-head { margin-bottom: 40px; }
-  .grid { grid-template-columns: 1fr; padding: 0; gap: 56px; }
-  .cart { position: static; height: auto; }
+  /* shop: sticky total bar on top, 2-col grid like the inspo */
+  .view-shop { grid-template-columns: minmax(0, 1fr); }
+  .cart { --pad: clamp(24px, 8vw, 40px); order: -1; position: sticky; top: var(--top); height: auto; z-index: 15; display: block; background: var(--panel-2); }
   .cart::before { display: none; }
-  .cart-items { padding: 40px var(--pad) 24px; }
-  .cart-sum { padding: 32px var(--pad) 40px; }
+  .cart-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 84px;
+    padding: 16px var(--pad);
+  }
+  .cart-toggle { text-align: left; font-size: 17px; line-height: 1.3; }
+  .cart-toggle b { font-weight: 700; }
+  .cart-toggle small { font-size: 14px; color: var(--muted); }
+  .cart .bar-full, .cart.has .bar-empty { display: none; }
+  .cart.has .bar-full { display: inline; }
+  .checkout-bar { width: auto; height: 40px; padding: 0 18px; display: none; flex-shrink: 0; }
+  .cart.has .checkout-bar { display: block; }
+  .cart-items, .cart-sum { display: none; }
+  .cart.open .cart-items { display: block; padding: 0 var(--pad) 18px; max-height: 45vh; }
+  .cart.open .cart-sum { display: block; padding: 18px var(--pad) 24px; background: var(--panel); }
+  .cart.open .cart-sum .note { margin: 10px 0 0; }
+  .cart.open .cart-sum .checkout:not(.checkout-bar) { display: none; }
+  .cart .empty { display: none; }
+  .line { grid-template-columns: 10px 1fr 28px 46px 16px; font-size: 15px; gap: 8px; }
+
+  .shop-list { padding: 40px var(--pad) 80px; }
+  .shop-head { margin-bottom: 48px; }
+  .shop-head p { font-size: 17px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; gap: 48px 20px; }
+  .card-art { margin-bottom: 14px; }
+  .dial { gap: 0; }
+  .dial .price { width: 76px; height: 76px; font-size: 18px; border-width: 1.5px; }
+  .dial button { width: 30px; height: 30px; font-size: 24px; }
+  .card .qty { font-size: 18px; left: 10px; bottom: 6px; }
+  .card.open .card-art::after, .card.open .dial { opacity: 1; }
+  .card-meta { display: block; margin-bottom: 10px; }
+  .card-meta h3 { font-size: 14px; }
+  .card-meta span { font-size: 12px; }
+  .sizes { gap: 4px; }
+  .sizes button { height: 30px; font-size: 12px; border-width: 1px; }
+  .size-dims { font-size: 11px; }
 }
 
-@media (max-width: 860px) and (min-width: 560px) {
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 860px) and (min-width: 600px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

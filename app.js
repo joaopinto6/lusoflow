@@ -321,7 +321,12 @@ grid.addEventListener('click', e => {
   if (e.target.dataset.size) { sel[id] = e.target.dataset.size; renderCard(card); }
   else if (e.target.closest('.plus')) change(id, sel[id], 1);
   else if (e.target.closest('.minus')) change(id, sel[id], -1);
+  else if (e.target.closest('.card-art') && noHover.matches) {
+    grid.querySelectorAll('.card.open').forEach(c => c !== card && c.classList.remove('open'));
+    card.classList.toggle('open');
+  }
 });
+const noHover = matchMedia('(hover: none)');
 
 /* ---------- Cart panel ---------- */
 function renderCart() {
@@ -332,7 +337,8 @@ function renderCart() {
 
   document.querySelectorAll('.cart-count').forEach(el => (el.textContent = count));
   $('.cart').classList.toggle('has', count > 0);
-  $('.checkout').disabled = !count;
+  document.querySelectorAll('.checkout').forEach(b => (b.disabled = !count));
+  if (!count) { $('.cart').classList.remove('open'); $('.cart-toggle').setAttribute('aria-expanded', false); }
   $('.lines').innerHTML = entries.map(([k, q]) => {
     const [id, size] = k.split('|');
     const p = POSTERS.find(x => x.id === id);
@@ -343,6 +349,7 @@ function renderCart() {
   $('.sub').textContent = euro(sub);
   $('.ship').textContent = count && !ship ? 'Grátis' : euro(SHIPPING);
   $('.tot').textContent = euro(sub + ship);
+  $('.tot-bar').textContent = euro(sub + ship);
   document.querySelectorAll('.card').forEach(renderCard);
 }
 
@@ -352,12 +359,17 @@ $('.lines').addEventListener('click', e => {
 });
 
 const toast = $('.toast');
-$('.checkout').onclick = () => {
+$('.cart-toggle').onclick = () => {
+  const c = $('.cart'); if (!c.classList.contains('has')) return;
+  $('.cart-toggle').setAttribute('aria-expanded', c.classList.toggle('open'));
+};
+
+document.querySelectorAll('.checkout').forEach(b => b.onclick = () => {
   toast.textContent = 'Mockup: o checkout Shopify ainda não está ligado.';
   toast.classList.add('show');
   clearTimeout(toast.t);
   toast.t = setTimeout(() => toast.classList.remove('show'), 2600);
-};
+});
 
 /* ---------- Routing ---------- */
 let pending = null;
