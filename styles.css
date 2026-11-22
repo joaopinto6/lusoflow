@@ -323,7 +323,7 @@ body[data-view="posters"] { overflow: hidden; }
 /* ---------- Narrow screens ---------- */
 @media (max-width: 860px) {
   :root { --top: 60px; }
-  .top, body[data-view="shop"] .top { position: sticky; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); }
+  .top, body[data-view="shop"] .top { position: sticky; background: var(--paper); }
   .brand { font-size: 15px; }
   .sub-brand { display: none; }
   .nav { gap: 20px; }
