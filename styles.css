@@ -339,7 +339,8 @@ body[data-view="posters"] { overflow: hidden; }
   .intro .hint { display: none; }
   .track { position: static; display: grid; grid-template-columns: minmax(0, 1fr); gap: 104px; }
   .poster { position: relative; top: 0; height: auto; width: 100%; min-width: 0; aspect-ratio: auto; transform: none !important; opacity: 1 !important; }
-  .poster svg { height: auto; }
+  .poster { will-change: auto; }
+  .poster svg, .card-art svg { height: auto; box-shadow: 0 18px 40px -14px rgba(0,0,0,.35), 0 4px 10px rgba(0,0,0,.08); }
   .poster::after {
     content: attr(data-label);
     display: block;
