@@ -186,7 +186,7 @@ const track = $('.track');
 let pos = 0, target = 0; // horizontal scroll offset in px (smoothed)
 
 track.innerHTML = POSTERS.map(p =>
-  `<div class="poster" data-n="${p.n}" data-label="${p.artist} — ${p.title}">${p.art(p.n, p.artist)}</div>`).join('');
+  `<div class="poster" data-n="${p.n}" data-label="${p.artist} — ${p.title}"><div class="frame">${p.art(p.n, p.artist)}</div></div>`).join('');
 const posterEls = [...track.children];
 
 const narrow = matchMedia('(max-width: 860px)');
